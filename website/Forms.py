@@ -43,8 +43,8 @@ class LoginForm(FlaskForm):
 
 class InputData(FlaskForm):
     date_recorded = DateField(label='Date')
-    ship_schedule = DecimalField(label='Average container weight: ')
-    waiting_time = IntegerField(label="Vessel Waiting time: ")
+    average_container_weight = DecimalField(label='Average container weight: ')
+    vessel_waiting_time = IntegerField(label="Vessel Waiting time: ")
     world_value = IntegerField(label="World value: ")
     singapore_value = IntegerField(label="Singapore Value: ")
     no_of_ships = IntegerField('Number of ships: ')
