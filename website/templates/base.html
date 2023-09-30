@@ -14,7 +14,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    <!--    with_categories = true means it grabs the categories as well for messages-->
+    {% if messages %}
+        {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {% autoescape false %}
+                {{ message }}
+                {% endautoescape %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              
+              </div>
 
-      {% block content %}
+        {% endfor %}
+    {% endif %}
+                
+    {% endwith %}
+    {% block content %}
 
     {% endblock %} 
+  

@@ -7,26 +7,27 @@
         <h1 class="text-5xl font-bold">Login now!</h1>
         <p class="py-6">Forecast Demand Management</p>
       </div>
+      <form method="POST">
+        {{ form.hidden_tag() }}
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <div class="card-body">
           <div class="form-control">
-            <label class="label">
-              <span class="label-text">Username</span>
-            </label>
-            <input type="text" placeholder="Username" class="input input-bordered" />
+            {{ form.username.label() }}
+            {{ form.username(class='input input-bordered', placeholder='Username') }}
+           
           </div>
           <div class="form-control">
-            <label class="label">
-              <span class="label-text">Password</span>
-            </label>
-            <input type="text" placeholder="password" class="input input-bordered" />
+            {{ form.password.label() }}
+            {{ form.password(class='input input-bordered', placeholder='Password') }}
+        
 
           </div>
           <div class="form-control mt-6">
-            <button class="btn btn-primary">Login</button>
-          </div>
+            {{ form.submit(class="btn btn-primary") }}
+            </div>
         </div>
       </div>
+    </form>
     </div>
   </div>
   {% endblock %}

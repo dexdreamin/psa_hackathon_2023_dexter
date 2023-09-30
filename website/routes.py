@@ -61,12 +61,23 @@ def check_password_strength(password):
     else:
         return "True"
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    csrf = csrfform()
+    form = LoginForm()
     users = User.query.all()
 
-    return render_template('index.html')
+    attempted_user = User.query.filter_by(username=form.username.data).first()
+
+    if request.method == 'POST':
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash('Login successfully!', category='success')
+            return redirect(url_for('input_details'))
+
+        else:
+            flash("Invalid username or password, please try again.", category='danger')
+
+    return render_template('index.html', form=form)
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -77,12 +88,14 @@ def login_page():
 
     attempted_user = User.query.filter_by(username=form.username.data).first()
 
-    if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
-        login_user(attempted_user)
-        flash('Login successfully!', category='success')
+    if request.method == 'POST':
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash('Login successfully!', category='success')
+            return redirect(url_for('input_details'))
 
-    else:
-        flash("Invalid username or password, please try again.", category='danger')
+        else:
+            flash("Invalid username or password, please try again.", category='danger')
     
 
     return render_template('login.html', form=form, csrf=csrf)
@@ -92,7 +105,7 @@ def login_page():
 def input_details():
     form = InputData()
     date_recorded = form.date_recorded.data
-    
+
 
     return render_template("input_details.html", form=form)
 
