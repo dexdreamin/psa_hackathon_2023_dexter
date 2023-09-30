@@ -81,7 +81,6 @@ def login_page():
         login_user(attempted_user)
         flash('Login successfully!', category='success')
 
-
     else:
         flash("Invalid username or password, please try again.", category='danger')
     
@@ -92,5 +91,8 @@ def login_page():
 @app.route('/input_details')
 def input_details():
     form = InputData()
+    date_recorded = form.date_recorded.data
     
+
     return render_template("input_details.html", form=form)
+

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %} Input details {% endblock %}
+{% block content %}
+
+<h1>Input details here</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.date_recorded.label() }}
+    {{ form.date_recorded(class='form-control form-control-user', placeholder='User name') }}
+    <br>
+    <h2>Ship schedule</h2>
+    {{ form.average_container_weight.label() }}
+    {{ form.average_container_weight(class="form-control form-control-user", placeholder="Average container weight")}}
+    <br>
+    {{ form.vessel_waiting_time.label() }}
+    {{ form.vessel_waiting_time(class="form-control form-control-user" placeholder="Vessel waiting time") }}
+    <br>
+    <h2>Trade fluxation</h2>
+    {{ form.world_value.label() }}
+    {{ form.world_value(class="form-control form-control-user" placeholder="World value") }}
+    <br>
+    {{ form.singapore_value.label() }}
+    {{ form.singapore_value(class="form-control form-control-user" placeholder="Singapore value")}}
+    <br>
+    <h2>Seasonal variation</h2>
+    {{ form.no_of_ships.label() }}
+    {{ form.no_of_ships(class="form-control form-control-user" placeholder="Number of ships")}}
+    <br>
+    {{ form.no_of_containers.label() }}
+    {{ form.no_of_containers(class="form-control form-control-user" placeholder="Number of containers")}}
+</form>
+
+{% endblock %}
