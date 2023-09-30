@@ -42,3 +42,14 @@ class User(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
         # return true or false
+
+class PSA_datalake(db.Model):
+    __tablename__ = "PSA datalake"
+    id = db.Column(db.Integer, primary_key=True)
+    date_recorded = db.Column(db.Integer)
+    average_container_weight = db.Column(db.Integer)
+    vessel_waiting_time = db.Column(db.Integer)
+    world_value = db.Column(db.Integer)
+    singapore_value = db.Column(db.Integer)
+    no_of_ships = db.Column(db.Integer)
+    no_of_containers = db.Column(db.Integer)

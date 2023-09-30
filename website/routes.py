@@ -93,3 +93,4 @@ def login_page():
 def input_details():
     form = InputData()
     
+    return render_template("input_details.html", form=form)
