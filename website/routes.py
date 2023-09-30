@@ -79,6 +79,8 @@ def login_page():
 
     if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
         login_user(attempted_user)
+        flash('Login successfully!', category='success')
+
 
     else:
         flash("Invalid username or password, please try again.", category='danger')
@@ -87,3 +89,7 @@ def login_page():
     return render_template('login.html', form=form, csrf=csrf)
 
 
+@app.route('/input_details')
+def input_details():
+    form = InputData()
+    
