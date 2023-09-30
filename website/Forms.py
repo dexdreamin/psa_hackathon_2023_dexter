@@ -42,7 +42,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label='Sign in')
 
 class InputData(FlaskForm):
-    date = DateField(label='Date')
+    date_recorded = DateField(label='Date')
     ship_schedule = DecimalField(label='Average container weight: ')
     waiting_time = IntegerField(label="Vessel Waiting time: ")
     world_value = IntegerField(label="World value: ")
@@ -50,3 +50,8 @@ class InputData(FlaskForm):
     no_of_ships = IntegerField('Number of ships: ')
     no_of_containers = IntegerField("Number of containers: ")
     continue_button = SubmitField('Continue')
+
+
+class Notepad(FlaskForm):
+    text_description = TextAreaField(validators=[DataRequired()])
+    submit_note = SubmitField("Submit note")

@@ -53,3 +53,10 @@ class PSA_datalake(db.Model):
     singapore_value = db.Column(db.Integer)
     no_of_ships = db.Column(db.Integer)
     no_of_containers = db.Column(db.Integer)
+
+class Notes_database(db.Model):
+    __tablename__ = "Notes_database"
+    id = db.Column(db.Integer, primary_key=True)
+    note = db.Columnn(db.Text())
+
+
