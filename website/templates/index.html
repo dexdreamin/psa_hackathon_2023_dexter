@@ -1,7 +1,32 @@
 {% extends "base.html" %}
-
-{% block title %}Login Page{% endblock %}
 {% block content %}
-    <h1>Dashboard</h1>
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="text-center lg:text-left">
+        <img src="https://static.wixstatic.com/media/79cb92_e7587743e1964ef0a18fd3cfd32f2828~mv2.png/v1/fill/w_146,h_55,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/psa_logo.png">
+        <h1 class="text-5xl font-bold">Login now!</h1>
+        <p class="py-6">Forecast Demand Management</p>
+      </div>
+      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div class="card-body">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Username</span>
+            </label>
+            <input type="text" placeholder="Username" class="input input-bordered" />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input type="text" placeholder="password" class="input input-bordered" />
 
-{% endblock %}
+          </div>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
