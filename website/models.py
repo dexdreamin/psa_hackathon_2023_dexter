@@ -17,15 +17,11 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     admin = db.Column(db.Integer())
-    usertype = db.Column(db.String(length=120))
+    username = db.Column(db.String(length=120))
     # the id unique to each user so that flask can identify each in{{ m3 }}idual user
-    
-    email_address = db.Column(db.String(length=50),
-                              nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60),
                               nullable=False, unique=True)
     profile_pic = db.Column(db.Text, nullable=True)
-    description = db.Column(db.Text(), nullable=True)
 
     @property
     def password(self):
@@ -57,6 +53,6 @@ class PSA_datalake(db.Model):
 class Notes_database(db.Model):
     __tablename__ = "Notes_database"
     id = db.Column(db.Integer, primary_key=True)
-    note = db.Columnn(db.Text())
+    note = db.Column(db.Text())
 
 
