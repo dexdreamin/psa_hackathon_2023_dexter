@@ -59,6 +59,5 @@ class Notes_database(db.Model):
 class Settings(db.Model):
     __tablename__ = "Settings"
     id = db.Column(db.Integer, primary_key=True)
-    dockhands = db.Column(db.Integer, default=1)
-    truckdrivers = db.Column(db.Integer, default=1)
-    supervisors = db.Column(db.Integer, default=1)
+    number = db.Column(db.Integer)
+    unit = db.Column(db.String(255))

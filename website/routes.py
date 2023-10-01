@@ -142,20 +142,39 @@ def notes():
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
     form = Settings_form()
-    if request.method == "POST":
-        dockhands = form.dockhands.data
-        truckdrivers = form.truckdrivers.data
-        supervisors = form.supervisors.data
-
-        settings = Settings.query.filter_by(id=1).first()
-        settings.dockhands = dockhands
-        settings.truckdrivers = truckdrivers
-        settings.supervisors = supervisors
-
-        db.session.commit()
-        flash("Settings updated!", category="success")
-        
-
+    
     return render_template("settings.html", form=form)
 
+@app.route("/add_item", methods=["POST"])
+def add_settings():
+    form = Settings_form()
+    if request.method == "POST":
+        settings = Settings(number=form.no_of_items.data, unit=form.unit.data)
+        db.session.add(settings)
+        db.session.commit()
+        flash("Settings added!", category="success")
 
+    return redirect(url_for('settings'))
+
+
+@app.route("/update_item", methods=["POST"])
+def update_settings(id):
+    form = Update_Quantity()
+    if request.method == "POST":
+        settings = Settings.query.filter_by(id=id).first()
+        settings.unit = Update_Quantity.no_of_items.data
+        db.session.commit()
+        flash("Settings updated!", category="success")
+
+    return redirect(url_for('settings'))
+
+
+@app.route("/delete_item", methods=["POST"])
+def delete_settings(id):
+    if request.method == "POST":
+        settings = Settings.query.filter_by(id=id).first()
+        db.session.delete(settings)
+        db.session.commit()
+        flash("Deleted successfully!", category="success")
+
+    return redirect(url_for('settings'))

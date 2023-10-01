@@ -58,7 +58,11 @@ class Notepad(FlaskForm):
 
 
 class Settings_form(FlaskForm):
-    dockhands = IntegerField(label="Number of dockhands: ")
-    truckdrivers = IntegerField(label="Number of truck drivers: ")
-    supervisors = IntegerField(label="Number of supervisors: ")
-    save_changes = SubmitField(label="Save changes")
+    no_of_items = IntegerField(label="No. of items")
+    unit = StringField(label="Items required")
+    save_changes = SubmitField(label="+")
+
+
+class Update_Quantity(FlaskForm):
+    no_of_items = IntegerField(label="No. of items")
+    save_changes = SubmitField()
