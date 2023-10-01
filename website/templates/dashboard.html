@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %} Chart {% endblock %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col items-center justify-center">
+      <!-- Page content here -->
+      <canvas id="ProfitGained" width="400" height="200"></canvas>
+      <canvas id="AverageContainerWeight" width="400" height="200"></canvas>
+      <canvas id="VesselWaitingTime" width="400" height="200"></canvas>
+      <canvas id="WorldValue" width="400" height="200"></canvas>
+      <canvas id="RegionalValue" width="400" height="200"></canvas>
+      <canvas id="SingaporeValue" width="400" height="200"></canvas>
+      <canvas id="NumberOfShips" width="400" height="200"></canvas>
+      <canvas id="NumberOfContainers" width="400" height="200"></canvas>
+      <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Menu</label>
+    
+    </div> 
+    <div class="drawer-side">
+      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> 
+      <ul class="menu p-4 w-50 min-h-full bg-base-200 text-base-content">
+        <!-- Sidebar content here -->
+        <br><div class="divider">Value</div>
+        <li><a href="#ProfitGained">Profit Gained</a></li>
+        <br><div class="divider">Shipping schedules</div>
+        <li><a href="#AverageContainerWeight">Average Container Weight</a></li>
+        <li><a href="#VesselWaitingTime">Vessel Waiting Time</a></li>
+        <br><div class="divider">Trade fluctuations</div>
+        <li><a href="#WorldValue">World Value</a></li>
+        <li><a href="#RegionalValue">Regional Value</a></li>
+        <li><a href="#SingaporeValue">Singapore Value</a></li>
+        <br><div class="divider">Seasonal Variations</div>
+        <li><a href="#NumberOfShips">Number Of Ships</a></li>
+        <li><a href="#NumberOfContainers">Number Of Containers</a></li>
+
+      </ul>
+    
+    </div>
+  </div>
+
+  <script>
+    // Get a reference to the canvas element
+    var cta = document.getElementById('ProfitGained').getContext('2d');
+    var ctb = document.getElementById('AverageContainerWeight').getContext('2d');
+    var ctc = document.getElementById('VesselWaitingTime').getContext('2d');
+    var ctd = document.getElementById('WorldValue').getContext('2d');
+    var cte = document.getElementById('RegionalValue').getContext('2d');
+    var ctf = document.getElementById('SingaporeValue').getContext('2d');
+    var ctg = document.getElementById('NumberOfShips').getContext('2d');
+    var cth = document.getElementById('NumberOfContainers').getContext('2d');
+    // Define the data for the chart (example data)
+    var chartDataA = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataB = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataC = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataD = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataE = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataF = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataG = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    var chartDataH = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [10, 20, 15, 25, 30],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderWidth: 2
+        }]
+    };
+    // Create the line chart
+    var Chart1 = new Chart(cta, {
+        type: 'line',
+        data: chartDataA,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart2 = new Chart(ctb, {
+        type: 'line',
+        data: chartDataB,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart3 = new Chart(ctc, {
+        type: 'line',
+        data: chartDataC,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart4 = new Chart(ctd, {
+        type: 'line',
+        data: chartDataD,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart5 = new Chart(cte, {
+        type: 'line',
+        data: chartDataE,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart6 = new Chart(ctf, {
+        type: 'line',
+        data: chartDataF,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart7 = new Chart(ctg, {
+        type: 'line',
+        data: chartDataG,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var Chart8 = new Chart(cth, {
+        type: 'line',
+        data: chartDataH,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
