@@ -42,7 +42,7 @@ class User(db.Model, UserMixin):
 class PSA_datalake(db.Model):
     __tablename__ = "PSA datalake"
     id = db.Column(db.Integer, primary_key=True)
-    date_recorded = db.Column(db.Integer)
+    date_recorded = db.Column(db.Date)
     average_container_weight = db.Column(db.Float(precision=2))
     vessel_waiting_time = db.Column(db.Integer)
     world_value = db.Column(db.Integer)

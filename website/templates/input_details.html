@@ -32,8 +32,10 @@
         {{ form.no_of_containers.label() }}
         {{ form.no_of_containers(class="input input-bordered w-full max-w-xs", placeholder="Number of containers")}}
         <div class="divider"></div>
+        <a href="" class="btn btn-primary stat-title">Continue</a>
         {{ form.continue_button(class="btn btn-primary stat-title")}}
         <br>
+       
         <a href="{{ url_for('dashboard') }}" class="btn btn-primary stat-title"> Skip</a>
     </div>
     </form>

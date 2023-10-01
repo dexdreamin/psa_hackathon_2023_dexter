@@ -26,16 +26,6 @@ class csrfform(FlaskForm):
 
 # end csrf
 bcrypt = Bcrypt()
-app.config['RECAPTCHA_ENABLED'] = True
-app.config['RECAPTCHA_PUBLIC_KEY'] = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'mailbottesting8@gmail.com'
-app.config['MAIL_PASSWORD'] = 'ulyjlirkskxgrkqb'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_ASCII_ATTACHMENTS'] = False
 csrf = CSRFProtect()
 csrf.init_app(app)
 
@@ -101,6 +91,13 @@ def login_page():
     return render_template('login.html', form=form, csrf=csrf)
 
 @login_required
+@app.route("/logout")
+def logout():
+    logout_user()
+    flash("Logged out successfully!", category="success")
+    return redirect(url_for('index'))
+
+@login_required
 @app.route('/input_details', methods=['GET', 'POST'])
 def input_details():
     form = InputData()
@@ -125,7 +122,67 @@ def input_details():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    datalake = PSA_datalake.query.all()
+    data_list = [None]*12
+    profit_gained = [None]*12
+    for data in datalake:
+        month = int(data.date_recorded.strftime("%m"))
+        if month == 1:
+            jan_count = []
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 2:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 3:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 4:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 5:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 6:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 7:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 8:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 9:
+            index = data.date_recorded.strftime("%m")[1]
+            print(index)
+
+        elif month == 10:
+            index = data.date_recorded.strftime("%m")
+            print(index)
+
+        elif month == 11:
+            index = data.date_recorded.strftime("%m")
+            print(index)
+
+        elif month == 12:
+            index = data.date_recorded.strftime("%m")
+            print(index)
+        
+        data_list[int(index)-1] = data
+
+        print(data_list)
+        print(profit_gained)
+
+   
+    return render_template('dashboard.html', datalake=datalake, data_list=data_list, profit_gained=profit_gained)
 
 @app.route('/notes', methods=['GET', 'POST'])
 def notes():
