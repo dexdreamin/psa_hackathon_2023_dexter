@@ -101,11 +101,41 @@ def login_page():
     return render_template('login.html', form=form, csrf=csrf)
 
 
-@app.route('/input_details')
+@app.route('/input_details', methods=['GET', 'POST'])
 def input_details():
     form = InputData()
-    date_recorded = form.date_recorded.data
+    if request.method == 'POST':
+        date_recorded = form.date_recorded.data
+        average_container_weight = form.average_container_weight.data
+        vessel_waiting_time = form.vessel_waiting_time.data
+        world_value = form.world_value.data
+        singapore_value = form.singapore_value.data
+        no_of_ships = form.no_of_ships.data
+        no_of_containers = form.no_of_containers.data
+
+        new_record = PSA_datalake(date_recorded=date_recorded, average_container_weight=average_container_weight, vessel_waiting_time=vessel_waiting_time, world_value=world_value, singapore_value=singapore_value, no_of_ships=no_of_ships, no_of_containers=no_of_containers)
+        db.session.add(new_record)
+        db.session.commit()
+
+        flash("Data added successfully!", category="success")
+        return redirect(url_for('dashboard'))
 
 
     return render_template("input_details.html", form=form)
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/notes', methods=['GET', 'POST'])
+def notes():
+    form = Notepad()
+    if request.method == "POST":
+        note = form.text_description.data
+        new_record = Notes_database(note=note)
+        db.session.add(new_record)
+        db.session.commit()
+        flash("Note added!", category="success")
+
+    return render_template('notes.html', form=form)
 

@@ -55,3 +55,10 @@ class InputData(FlaskForm):
 class Notepad(FlaskForm):
     text_description = TextAreaField(validators=[DataRequired()])
     submit_note = SubmitField("Submit note")
+
+
+class Settings(FlaskForm):
+    dockhands = IntegerField(label="Number of dockhands: ")
+    truckdrivers = IntegerField(label="Number of truck drivers: ")
+    supervisors = IntegerField(label="Number of supervisors: ")
+    save_changes = SubmitField(label="Save changes")
