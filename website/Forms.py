@@ -60,9 +60,11 @@ class Notepad(FlaskForm):
 class Settings_form(FlaskForm):
     no_of_items = IntegerField(label="No. of items")
     unit = StringField(label="Items required")
-    save_changes = SubmitField(label="+")
+    text_description = TextAreaField(label="Notes here", validators=[DataRequired()])
+    save_changes = SubmitField(label="Add")
 
 
 class Update_Quantity(FlaskForm):
     no_of_items = IntegerField(label="No. of items")
+    unit = StringField(label="Items required")
     save_changes = SubmitField()

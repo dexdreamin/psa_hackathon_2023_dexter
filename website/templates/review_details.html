@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} Input details {% endblock %}
+{% block content %}
+
+    <div class="flex flex-col border-opacity-50">
+    <h1 class="text-5xl font-bold">Input Details Below</h1>
+    Review details:
+
+    <p>Date recorded: {{ date_recorded }}</p>
+    <p>Average container weight: {{ average_container_weight }}</p>
+    <p>Vessel waiting time: {{ vessel_waiting_time }}</p>
+    <p>World value: {{ world_value }}</p>
+    <p>Singapore value: {{ singapore_value }}</p>
+    <p>No. of ships: {{ no_of_ships }}</p>
+    <p>No. of containers: {{ no_of_containers }}</p>
+    <br>
+    
+    <a href="{{ url_for('dashboard') }}" class="btn btn-primary stat-title">Confirm</a>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <input type="submit" value="Discard changes">
+    </form>
+    
+    
+{% endblock %}

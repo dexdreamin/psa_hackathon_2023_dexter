@@ -120,81 +120,17 @@ def input_details():
 
     return render_template("input_details.html", form=form)
 
+
+
 @app.route('/dashboard')
 def dashboard():
     datalake = PSA_datalake.query.all()
     data_list = [None]*12
     profit_gained = [None]*12
-    for data in datalake:
-        month = int(data.date_recorded.strftime("%m"))
-        if month == 1:
-            jan_count = []
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 2:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 3:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 4:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 5:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 6:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 7:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 8:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 9:
-            index = data.date_recorded.strftime("%m")[1]
-            print(index)
-
-        elif month == 10:
-            index = data.date_recorded.strftime("%m")
-            print(index)
-
-        elif month == 11:
-            index = data.date_recorded.strftime("%m")
-            print(index)
-
-        elif month == 12:
-            index = data.date_recorded.strftime("%m")
-            print(index)
-        
-        data_list[int(index)-1] = data
-
-        print(data_list)
-        print(profit_gained)
-
-   
+    
     return render_template('dashboard.html', datalake=datalake, data_list=data_list, profit_gained=profit_gained)
 
-@app.route('/notes', methods=['GET', 'POST'])
-def notes():
-    form = Notepad()
-    if request.method == "POST":
-        note = form.text_description.data
-        new_record = Notes_database(note=note)
-        db.session.add(new_record)
-        db.session.commit()
-        flash("Note added!", category="success")
 
-    return render_template('notes.html', form=form)
 
 @app.route('/AI')
 def AI():
@@ -204,14 +140,15 @@ def settings():
     form = Settings_form()
     update_form = Update_Quantity()
     all_items = Settings.query.all()
-    
+            
+
     return render_template("settings.html", form=form, all_items=all_items, update_form=update_form)
 
 @app.route("/add_item", methods=["POST"])
 def add_settings():
     form = Settings_form()
     if request.method == "POST":
-        settings = Settings(number=form.no_of_items.data, unit=form.unit.data)
+        settings = Settings(number=form.no_of_items.data, unit=form.unit.data, note=form.text_description.data)
         db.session.add(settings)
         db.session.commit()
         flash("Settings added!", category="success")
@@ -243,4 +180,5 @@ def delete_settings(id):
 
 @app.route("/resources")
 def reosources():
-    return render_template("resources.html")
+    setting_db = Settings.query.all()
+    return render_template("resources.html", setting_db=setting_db)

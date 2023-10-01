@@ -57,6 +57,19 @@
   </div>
 <h1 class="stat-title text-error">Resources Recommended To Be Used </h1>
 <div class="hero flex flex-row ">
+{% for setting in setting_db %}
+    <div class="stats shadow">
+        <div class="stat">
+          <div class="stat-title">Total {{ setting.unit }} needed</div>
+          <div class="stat-value">{{ setting.number }}</div>
+          <div class="stat-desc text-success">Within Needed Range</div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<br>
+<div class="hero flex flex-row ">
     <div class="stats shadow">
         <div class="stat">
           <div class="stat-title">Total AGVs Needed</div>

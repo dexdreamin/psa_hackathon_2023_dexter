@@ -50,10 +50,7 @@ class PSA_datalake(db.Model):
     no_of_ships = db.Column(db.Integer)
     no_of_containers = db.Column(db.Integer)
 
-class Notes_database(db.Model):
-    __tablename__ = "Notes_database"
-    id = db.Column(db.Integer, primary_key=True)
-    note = db.Column(db.Text())
+
 
 
 class Settings(db.Model):
@@ -61,3 +58,4 @@ class Settings(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.Integer)
     unit = db.Column(db.String(255))
+    note = db.Column(db.String(255))
