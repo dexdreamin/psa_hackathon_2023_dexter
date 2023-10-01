@@ -41,6 +41,7 @@
         <li><a href="#NumberOfShips">Number Of Ships</a></li>
         <li><a href="#NumberOfContainers">Number Of Containers</a></li>
         <br><div class="divider btn-secondary">Other Actions</div>
+        <li><a href="http://localhost:3000/">Ai Ship Helper</a></li>
         <li><a href="/AI">Ai Ship Advisor</a></li>
         <li><a href="/settings">Change Settings</a></li>
         <li><a href="/notes">Add Notes</a></li>
@@ -62,10 +63,10 @@
     var cth = document.getElementById('NumberOfContainers').getContext('2d');
     // Define the data for the chart (example data)
     var chartDataA = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        labels: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
         datasets: [{
-            label: 'Profit Gained (SGD)',
-            data: [10, 20, 15, 25, 30],
+            label: 'Profit Gained (SGD) millions',
+            data: [3835, 4076, 4314, 3575, 3723, 3830, 3573, 3680, 3968, 4086, 4077, 4179, 4670, 7994],
             borderColor: 'red',
             backgroundColor: 'white',
             borderWidth: 2
@@ -74,8 +75,8 @@
     var chartDataB = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Average Container Weight (Tons)',
-            data: [13, 26, 17, 28, 54],
+            label: 'Average Container Weight (Tonnes)',
+            data: [16.8, 15.9, 15.7, 15.5, 15.2, 15.2, 15.5, 15.1, 15.2, 15.4, 15.8, 15.1, 16, 17, 15.2, 15.2, 14.1, 14.8, 15, 15],
             borderColor: 'orange',
             backgroundColor: 'white',
             borderWidth: 2
@@ -85,47 +86,47 @@
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
             label: 'Vessel Waiting Time (Hrs)',
-            data: [4, 27, 35, 25, 7],
+            data: [10, 20, 15, 25, 30, 10, 40, 4, 3, 6, 20, 17],
             borderColor: 'yellow',
             backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataD = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        labels: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
         datasets: [{
             label: 'World GDP',
-            data: [3, 36, 25, 10, 40],
+            data: [14623, 17066, 19790, 21172, 21410, 22086, 21997, 22772, 24324, 26485, 27024, 27144, 31095, 30655, 31000],
             borderColor: 'green',
             backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataE = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        labels: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
         datasets: [{
             label: 'Regional GDP',
-            data: [9, 28, 15, 70, 80],
+            data: [14623, 17066, 19790, 21172, 21410, 22086, 21997, 22772, 24324, 26485, 27024, 27144, 31095, 30655, 31000],
             borderColor: 'blue',
             backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataF = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        labels: ['2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
         datasets: [{
             label: 'Singapore GDP',
-            data: [67, 78, 90, 38, 79],
+            data: [194.15, 239.81, 279.36, 295.12, 307.58, 320, 214.86, 319.03, 343.27, 376.87, 376.84, 348.39, 423.8, 466.79, 480],
             borderColor: 'purple',
             backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataG = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October'],
         datasets: [{
-            label: 'Number Of Ships',
-            data: [30, 64, 27, 39, 80],
+            label: 'Number Of Ships 2023',
+            data: [1325, 1142, 1361, 1307, 1378, 1290, 1386, 1389, 1201, 1278],
             borderColor: 'pink',
             backgroundColor: 'white',
             borderWidth: 2
@@ -135,7 +136,7 @@
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
             label: 'Number Of Containers',
-            data: [20, 50, 75, 45, 90],
+            data: [3064, 2844, 3089, 3012, 3121, 3167, 3287, 3280, 3065, 3055, 2957, 3248],
             borderColor: 'white',
             backgroundColor: 'white',
             borderWidth: 2
