@@ -139,6 +139,9 @@ def notes():
 
     return render_template('notes.html', form=form)
 
+@app.route('/AI')
+def AI():
+    return render_template("iframe.html")
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
     form = Settings_form()
