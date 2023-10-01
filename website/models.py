@@ -43,7 +43,7 @@ class PSA_datalake(db.Model):
     __tablename__ = "PSA datalake"
     id = db.Column(db.Integer, primary_key=True)
     date_recorded = db.Column(db.Integer)
-    average_container_weight = db.Column(db.Integer)
+    average_container_weight = db.Column(db.Float(precision=2))
     vessel_waiting_time = db.Column(db.Integer)
     world_value = db.Column(db.Integer)
     singapore_value = db.Column(db.Integer)
@@ -56,3 +56,9 @@ class Notes_database(db.Model):
     note = db.Column(db.Text())
 
 
+class Settings(db.Model):
+    __tablename__ = "Settings"
+    id = db.Column(db.Integer, primary_key=True)
+    dockhands = db.Column(db.Integer, default=1)
+    truckdrivers = db.Column(db.Integer, default=1)
+    supervisors = db.Column(db.Integer, default=1)

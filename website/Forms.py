@@ -47,17 +47,17 @@ class InputData(FlaskForm):
     vessel_waiting_time = IntegerField(label="Vessel Waiting time: ")
     world_value = IntegerField(label="World value: ")
     singapore_value = IntegerField(label="Singapore Value: ")
-    no_of_ships = IntegerField('Number of ships: ')
-    no_of_containers = IntegerField("Number of containers: ")
-    continue_button = SubmitField('Continue')
+    no_of_ships = IntegerField(label='Number of ships: ')
+    no_of_containers = IntegerField(label="Number of containers: ")
+    continue_button = SubmitField(label='Continue')
 
 
 class Notepad(FlaskForm):
     text_description = TextAreaField(validators=[DataRequired()])
-    submit_note = SubmitField("Submit note")
+    submit_note = SubmitField(label="Submit note")
 
 
-class Settings(FlaskForm):
+class Settings_form(FlaskForm):
     dockhands = IntegerField(label="Number of dockhands: ")
     truckdrivers = IntegerField(label="Number of truck drivers: ")
     supervisors = IntegerField(label="Number of supervisors: ")
