@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy UI Alert</title>
+    <!-- Include Daisy UI CSS and JS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.19.2/dist/full.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+<div id="app">
+    <!-- Input Box -->
+    <input
+        type="text"
+        id="inputBox"
+        class="w-64 p-2 rounded-md border"
+        placeholder="Enter 'hello' or something else..."
+    >
+    <button
+        class="p-2 bg-blue-500 text-white rounded-md ml-2"
+        onclick="checkInput()"
+    >
+        Submit
+    </button>
+
+    <!-- Alert Component -->
+    <div
+        id="alert"
+        class="hidden w-64 mt-4 p-3 bg-green-500 text-white rounded-md"
+    >
+        <span id="alertText"></span>
+        <button
+            class="float-right"
+            onclick="closeAlert()"
+        >
+            Close
+        </button>
+    </div>
+</div>
+
+<script>
+    // Function to check the input and display the alert
+    function checkInput() {
+        const inputBox = document.getElementById('inputBox');
+        const alert = document.getElementById('alert');
+        const alertText = document.getElementById('alertText');
+
+        if (inputBox.value.toLowerCase() === 'hello') {
+            alert.classList.remove('bg-red-500');
+            alert.classList.add('bg-green-500');
+            alertText.innerText = 'You entered "hello".';
+        } else {
+            alert.classList.remove('bg-green-500');
+            alert.classList.add('bg-red-500');
+            alertText.innerText = 'You entered something else.';
+        }
+
+        alert.style.display = 'block';
+    }
+
+    // Function to close the alert
+    function closeAlert() {
+        const alert = document.getElementById('alert');
+        alert.style.display = 'none';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} Settings {% endblock %}
+{% block content %}
+<div class="hero">
+<br>
+<div class="flex flex-col border-opacity-50">
+    <h1 class="text-5xl font-bold">Change Settings</h1><br>
+    <h1 class="text-2xl font-bold">For every 5000 TEUs</h1>
+    <!--this is where the uploaded data goes (8 is a sample data)-->
+    <div class="chat-bubble primary ">8 Cranes</div>
+    <div class="chat-bubble primary ">49 vehicles</div>
+    <div class="chat-bubble primary ">2330 Workers</div>
+    <!--this is where the uploaded data goes-->
+    <br>
+    <!--text input-->
+    <textarea class="textarea textarea-info" placeholder="Add notes"></textarea>
+    <br>
+    <!--text upload-->
+    <button class="btn btn-primary">+</button>
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white shadow-md flex justify-center">
+        <button class="btn btn-primary">
+            Back
+        </button>
+    </div>
+</div>
+{% endblock %}
