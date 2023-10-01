@@ -2,23 +2,15 @@
 
 {% block title %} Notes {% endblock %}
 {% block content %}
-<div class="hero">
-<div class="flex flex-col border-opacity-50">
-    <h1 class="text-5xl font-bold">Add notes</h1>
-    <textarea class="textarea textarea-info" placeholder="Add notes"></textarea>
-    <br>
-    <button class="btn btn-primary">Continue</button>
-</div>
-{% endblock %}
-
 <div>
-    <form method="POST">
-        <div class="card">
+    <form method="POST" class="hero">
+        <div class="flex flex-col border-opacity-50">
             <div class="card-body">
                 {{ form.hidden_tag() }}
-                {{ form.text_description(class='form-control form-control-user', placeholder='Notes here...') }}
+                {{ form.text_description(class='text-5xl stat-title', placeholder='Notes here...') }}
                 {{ form.submit_note(class="btn btn-primary stat-title") }}
                 <br>
+                <a href="/dashboard" class="btn btn-primary">Dashboard</a>
             </div>
 
         </div>

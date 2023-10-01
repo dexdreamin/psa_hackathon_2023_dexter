@@ -2,6 +2,9 @@
 
 {% block title %} Chart {% endblock %}
 {% block content %}
+<style>
+    p{color:white}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="drawer lg:drawer-open">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -34,7 +37,11 @@
         <br><div class="divider">Seasonal Variations</div>
         <li><a href="#NumberOfShips">Number Of Ships</a></li>
         <li><a href="#NumberOfContainers">Number Of Containers</a></li>
+        <br><div class="divider btn-secondary">Other Actions</div>
         <li><a href="/AI">Ai Ship Advisor</a></li>
+        <li><a href="/settings">Change Settings</a></li>
+        <li><a href="/notes">Add Notes</a></li>
+        <li><a href="/resources">Resources Required</a></li>
       </ul>
     
     </div>
@@ -54,80 +61,80 @@
     var chartDataA = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Profit Gained (SGD)',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'red',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataB = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Average Container Weight (Tons)',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'orange',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataC = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Vessel Waiting Time (Hrs)',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'yellow',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataD = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'World GDP',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'green',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataE = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Regional GDP',
             data: [10, 20, 15, 25, 30],
             borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataF = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Singapore GDP',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'purple',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataG = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Number Of Ships',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'pink',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
     var chartDataH = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'July', 'September', 'October', 'November', 'December'],
         datasets: [{
-            label: 'Sample Data',
+            label: 'Number Of Containers',
             data: [10, 20, 15, 25, 30],
-            borderColor: 'blue',
-            backgroundColor: 'rgba(0, 0, 255, 0.2)',
+            borderColor: 'white',
+            backgroundColor: 'white',
             borderWidth: 2
         }]
     };
@@ -142,7 +149,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart2 = new Chart(ctb, {
@@ -155,7 +177,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart3 = new Chart(ctc, {
@@ -168,7 +205,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart4 = new Chart(ctd, {
@@ -181,7 +233,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart5 = new Chart(cte, {
@@ -194,7 +261,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart6 = new Chart(ctf, {
@@ -207,7 +289,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart7 = new Chart(ctg, {
@@ -220,7 +317,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
     var Chart8 = new Chart(cth, {
@@ -233,7 +345,22 @@
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+            legend: {
+                labels: {
+                    color: 'red' // Change legend label text color to red
+                }
+            },
+
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: 'yellow', // Change tooltip background color to yellow
+            titleColor: 'green', // Change tooltip title text color to green
+            bodyColor: 'white' // Change tooltip body text color to white
+        }
+            
         }
     });
 </script>
