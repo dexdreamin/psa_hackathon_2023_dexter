@@ -181,3 +181,7 @@ def delete_settings(id):
         flash("Deleted successfully!", category="success")
 
     return redirect(url_for('settings'))
+
+@app.route("/resources")
+def reosources():
+    return render_template("resources.html")
