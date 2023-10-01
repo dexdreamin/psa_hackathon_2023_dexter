@@ -101,7 +101,7 @@ def login_page():
     return render_template('login.html', form=form, csrf=csrf)
 
 @login_required
-@app.route('/input_details')
+@app.route('/input_details', methods=['GET', 'POST'])
 def input_details():
     form = InputData()
     if request.method == 'POST':
@@ -139,3 +139,26 @@ def notes():
 
     return render_template('notes.html', form=form)
 
+@app.route('/settings', methods=['GET', 'POST'])
+def settings():
+    form = Settings_form()
+    if request.method == "POST":
+        dockhands = form.dockhands.data
+        truckdrivers = form.truckdrivers.data
+        supervisors = form.supervisors.data
+
+        settings = Settings.query.filter_by(id=1).first()
+        settings.dockhands = dockhands
+        settings.truckdrivers = truckdrivers
+        settings.supervisors = supervisors
+
+        db.session.commit()
+        flash("Settings updated!", category="success")
+        
+
+    return render_template("settings.html", form=form)
+
+
+@app.route('/AI')
+def AI():
+    return render_template("iframe.html")
