@@ -145,8 +145,10 @@ def AI():
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
     form = Settings_form()
+    update_form = Update_Quantity()
+    all_items = Settings.query.all()
     
-    return render_template("settings.html", form=form)
+    return render_template("settings.html", form=form, all_items=all_items, update_form=update_form)
 
 @app.route("/add_item", methods=["POST"])
 def add_settings():
@@ -160,19 +162,19 @@ def add_settings():
     return redirect(url_for('settings'))
 
 
-@app.route("/update_item", methods=["POST"])
+@app.route("/update_item/<int:id>", methods=["POST"])
 def update_settings(id):
-    form = Update_Quantity()
+    update_form = Update_Quantity()
     if request.method == "POST":
         settings = Settings.query.filter_by(id=id).first()
-        settings.unit = Update_Quantity.no_of_items.data
+        settings.number = update_form.no_of_items.data
         db.session.commit()
         flash("Settings updated!", category="success")
 
     return redirect(url_for('settings'))
 
 
-@app.route("/delete_item", methods=["POST"])
+@app.route("/delete_item/<int:id>", methods=["POST"])
 def delete_settings(id):
     if request.method == "POST":
         settings = Settings.query.filter_by(id=id).first()
