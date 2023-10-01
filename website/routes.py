@@ -43,20 +43,20 @@ csrf.init_app(app)
 
 def check_password_strength(password):
     if len(password) < 8:
-        flash("Password is too short, at least 8 characters, try again",
-              category='danger')
+        flash('Password is too short, at least 8 characters, try again',
+              category='error')
         return False
     elif re.search("[a-z]", password) is None:
-        flash("Password is missing a lowercase letter, try again", category='danger')
+        flash('Password is missing a lowercase letter, try again', category='error')
         return False
     elif re.search("[A-Z]", password) is None:
-        flash("Password is missing a uppercase letter, try again", category='danger')
+        flash('Password is missing a uppercase letter, try again', category='error')
         return False
     elif re.search("[0-9]", password) is None:
-        flash("Password is missing a digit, try again", category='danger')
+        flash('Password is missing a digit, try again', category='error')
         return False
     elif re.search("[!@#\$%^&*()_\-+=\{\}\[\]:;\"'<>,.?/|\\~`]", password) is None:
-        flash("Password is missing a special character, try again.", category='danger')
+        flash('Password is missing a special character, try again.', category='error')
         return False
     else:
         return "True"
@@ -75,7 +75,7 @@ def index():
             return redirect(url_for('input_details'))
 
         else:
-            flash("Invalid username or password, please try again.", category='danger')
+            flash('Invalid username or password, please try again.', category='error')
 
     return render_template('index.html', form=form)
 
@@ -95,7 +95,7 @@ def login_page():
             return redirect(url_for('input_details'))
 
         else:
-            flash("Invalid username or password, please try again.", category='danger')
+            flash('Invalid username or password, please try again.', category='error')
     
 
     return render_template('login.html', form=form, csrf=csrf)

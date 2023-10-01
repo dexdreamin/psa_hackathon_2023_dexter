@@ -3,32 +3,35 @@
 {% block title %} Input details {% endblock %}
 {% block content %}
 
-<h1>Input details here</h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.date_recorded.label() }}
-    {{ form.date_recorded(class='form-control form-control-user', placeholder='User name') }}
-    <br>
-    <h2>Ship schedule</h2>
-    {{ form.average_container_weight.label() }}
-    {{ form.average_container_weight(class="form-control form-control-user", placeholder="Average container weight")}}
-    <br>
-    {{ form.vessel_waiting_time.label() }}
-    {{ form.vessel_waiting_time(class="form-control form-control-user", placeholder="Vessel waiting time") }}
-    <br>
-    <h2>Trade fluxation</h2>
-    {{ form.world_value.label() }}
-    {{ form.world_value(class="form-control form-control-user", placeholder="World value") }}
-    <br>
-    {{ form.singapore_value.label() }}
-    {{ form.singapore_value(class="form-control form-control-user", placeholder="Singapore value")}}
-    <br>
-    <h2>Seasonal variation</h2>
-    {{ form.no_of_ships.label() }}
-    {{ form.no_of_ships(class="form-control form-control-user", placeholder="Number of ships")}}
-    <br>
-    {{ form.no_of_containers.label() }}
-    {{ form.no_of_containers(class="form-control form-control-user", placeholder="Number of containers")}}
-</form>
+    <form method="POST" >
+        <div class="hero flex flex-col border-opacity-50">
+        <h1 class="text-5xl font-bold">Input Details Below</h1>
+        <div class="divider">Others</div>
+        {{ form.hidden_tag() }}
+        {{ form.date_recorded.label() }}
+        {{ form.date_recorded(class='input input-bordered w-full max-w-xs', placeholder='User name') }}
+        <br>
+        <div class="divider">Ship Schedule</div>
+        {{ form.average_container_weight.label() }}
+        {{ form.average_container_weight(class="input input-bordered w-full max-w-xs", placeholder="Average container weight")}}
+        <br>
+        {{ form.vessel_waiting_time.label() }}
+        {{ form.vessel_waiting_time(class="input input-bordered w-full max-w-xs", placeholder="Vessel waiting time") }}
+        <br>
+        <div class="divider">trade fluctuations</div>
+        {{ form.world_value.label() }}
+        {{ form.world_value(class="input input-bordered w-full max-w-xs", placeholder="World value") }}
+        <br>
+        {{ form.singapore_value.label() }}
+        {{ form.singapore_value(class="input input-bordered w-full max-w-xs", placeholder="Singapore value")}}
+        <br>
+        <div class="divider">Seasonal variation</div>
+        {{ form.no_of_ships.label() }}
+        {{ form.no_of_ships(class="input input-bordered w-full max-w-xs", placeholder="Number of ships")}}
+        <br>
+        {{ form.no_of_containers.label() }}
+        {{ form.no_of_containers(class="input input-bordered w-full max-w-xs", placeholder="Number of containers")}}
+    </div>
+    </form>
 
 {% endblock %}
