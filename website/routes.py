@@ -100,7 +100,7 @@ def login_page():
 
     return render_template('login.html', form=form, csrf=csrf)
 
-
+@login_required
 @app.route('/input_details')
 def input_details():
     form = InputData()
@@ -109,3 +109,17 @@ def input_details():
 
     return render_template("input_details.html", form=form)
 
+@login_required
+@app.route('/notes')
+def notes():
+    return render_template("notes.html")
+
+@login_required
+@app.route('/chart')
+def chart():
+    return render_template("chart.html")
+
+@login_required
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")

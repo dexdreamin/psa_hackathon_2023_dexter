@@ -3,8 +3,8 @@
 {% block title %} Input details {% endblock %}
 {% block content %}
 
-    <form method="POST" >
-        <div class="hero flex flex-col border-opacity-50">
+    <form method="POST" class="hero" >
+        <div class="flex flex-col border-opacity-50">
         <h1 class="text-5xl font-bold">Input Details Below</h1>
         <div class="divider">Others</div>
         {{ form.hidden_tag() }}
@@ -31,7 +31,11 @@
         <br>
         {{ form.no_of_containers.label() }}
         {{ form.no_of_containers(class="input input-bordered w-full max-w-xs", placeholder="Number of containers")}}
+        <div class="divider"></div>
+        {{ form.continue_button(class="btn btn-primary stat-title")}}
+        <br>
+        <a href="#" class="btn btn-primary stat-title"> Skip</a>
     </div>
     </form>
-
+    
 {% endblock %}
